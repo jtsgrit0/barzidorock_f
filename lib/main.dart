@@ -1,66 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:barzidorock_f/map_screen.dart';
+import 'package:barzidorock_f/services/venue_service.dart';
+import 'package:barzidorock_f/services/place_service.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider<VenueService>(create: (_) => VenueService()),
+        Provider<PlaceService>(create: (_) => PlaceService(apiKey: 'AIzaSyCPId3GB0P1xwt4hiSJlu-rV41pPOCOLG0')),
+      ],
+      child: const BarZidoRockApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class BarZidoRockApp extends StatelessWidget {
+  const BarZidoRockApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'URL Launcher Demo',
+      title: 'BarZidoROCK',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, brightness: Brightness.dark),
+        useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'URL Launcher Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  Future<void> _launchUrl(Uri url) async {
-    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      throw Exception('Could not launch $url');
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () => _launchUrl(Uri.parse('https://www.google.com')),
-              child: const Text('Open Google'),
-            ),
-            ElevatedButton(
-              onPressed: () => _launchUrl(Uri.parse('tel:+1234567890')),
-              child: const Text('Make a Call'),
-            ),
-            ElevatedButton(
-              onPressed: () => _launchUrl(Uri.parse('sms:+1234567890')),
-              child: const Text('Send SMS'),
-            ),
-          ],
-        ),
-      ),
+      home: const MapScreen(),
     );
   }
 }
