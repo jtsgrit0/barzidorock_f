@@ -1,10 +1,8 @@
 name: Flutter Build and Deploy
-
 on:
   push:
     branches:
       - master
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,15 +14,21 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.44.2'
+          flutter-version: '3.29.0'
           channel: 'stable'
-          
+      
+      - name: Enable web platform
+        run: flutter config --enable-web
+      
       - name: Install dependencies
         run: flutter pub get
-        
+      
       - name: Build for web
-        run: flutter build web --base-href '/barzidorock_f/'
-        
+        run: flutter build web --base-href '/barzidorock_f/' --release
+      
+      - name: Verify build output
+        run: ls -la ./build/web
+      
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
