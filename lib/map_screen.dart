@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:barzidorock_f/models/venue.dart';
-import 'package:barzidorock_f/services/venue_service.dart';
+import 'package:barzidorock_f/models/venues_data.dart';
 import 'package:barzidorock_f/services/place_service.dart';
 import 'package:barzidorock_f/screens/venue_detail_screen.dart';
 
@@ -31,7 +31,10 @@ class _MapScreenState extends State<MapScreen> {
   void initState() {
     super.initState();
     _placeService = Provider.of<PlaceService>(context, listen: false);
-    // 초기에는 아무것도 로드하지 않음
+    // 앱 시작시 전체 필터 적용하여 마커 로드
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _applyFilter();
+    });
   }
 
   Future<List<Venue>> _searchPlaces(String query, LatLng location) async {
@@ -55,16 +58,16 @@ class _MapScreenState extends State<MapScreen> {
     List<Venue> currentVenues = [];
 
     if (_selectedCategory == '전체') {
-      final hongdaePlaces = await _searchPlaces('bar|pub|club|live music', _hongdaeLocation);
-      final itaewonPlaces = await _searchPlaces('bar|pub|club|live music', _itaewonLocation);
+      final hongdaePlaces = getHongdaeVenues();
+      final itaewonPlaces = getItaewonVenues();
       currentVenues.addAll(hongdaePlaces);
       currentVenues.addAll(itaewonPlaces);
     } else if (_selectedCategory == '홍대') {
-      final googlePlaces = await _searchPlaces('bar|pub|club|live music', _hongdaeLocation);
-      currentVenues.addAll(googlePlaces);
+      final localPlaces = getHongdaeVenues();
+      currentVenues.addAll(localPlaces);
     } else if (_selectedCategory == '이태원') {
-      final googlePlaces = await _searchPlaces('bar|pub|club|live music', _itaewonLocation);
-      currentVenues.addAll(googlePlaces);
+      final localPlaces = getItaewonVenues();
+      currentVenues.addAll(localPlaces);
     }
 
     print('MapScreen: Number of venues received from _searchPlaces: ${currentVenues.length}'); // 디버깅: 검색된 장소 개수 출력
