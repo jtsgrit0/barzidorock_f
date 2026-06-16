@@ -55,7 +55,10 @@ class _MapScreenState extends State<MapScreen> {
     List<Venue> currentVenues = [];
 
     if (_selectedCategory == '전체') {
-      // '전체' 선택 시 모든 마커를 지우고 지도를 초기 상태로 유지
+      final hongdaePlaces = await _searchPlaces('bar|pub|club|live music', _hongdaeLocation);
+      final itaewonPlaces = await _searchPlaces('bar|pub|club|live music', _itaewonLocation);
+      currentVenues.addAll(hongdaePlaces);
+      currentVenues.addAll(itaewonPlaces);
     } else if (_selectedCategory == '홍대') {
       final googlePlaces = await _searchPlaces('bar|pub|club|live music', _hongdaeLocation);
       currentVenues.addAll(googlePlaces);
