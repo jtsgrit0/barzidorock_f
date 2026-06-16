@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "name": "락앤롤 펍",
+    "description": "다양한 락 음악과 시원한 맥주가 있는 곳",
+    "imageUrl": "https://example.com/rock_pub.jpg",
+    "latitude": 37.5665,
+    "longitude": 126.9780,
+    "rating": 4.5,
+    "category": "홍대",
+    "ticketUrl": "https://example.com/tickets/rock_pub"
+  },
+  {
+    "id": "2",
+    "name": "블루스 라이브",
+    "description": "매일 밤 라이브 블루스 공연이 펼쳐지는 분위기 좋은 바",
+    "imageUrl": "https://example.com/blues_live.jpg",
+    "latitude": 37.5509,
+    "longitude": 126.9882,
+    "rating": 4.8,
+    "category": "이태원",
+    "ticketUrl": "https://example.com/tickets/blues_live"
+  },
+  {
+    "id": "3",
+    "name": "인디 밴드 아지트",
+    "description": "신선한 인디 밴드들의 공연을 만날 수 있는 숨겨진 공간",
+    "imageUrl": "https://example.com/indie_band.jpg",
+    "latitude": 37.5790,
+    "longitude": 126.9745,
+    "rating": 4.2,
+    "category": "전체",
+    "ticketUrl": "https://example.com/tickets/indie_band"
+  }
+]
