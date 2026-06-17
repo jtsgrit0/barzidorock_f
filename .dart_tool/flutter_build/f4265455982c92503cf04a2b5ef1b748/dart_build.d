@@ -1,1 +1,0 @@
- D:\\barzidorock_f\\.dart_tool\\flutter_build\\f4265455982c92503cf04a2b5ef1b748\\dart_build_result.json:  D:\\barzidorock_f\\.dart_tool\\package_config.json D:\\barzidorock_f\\pubspec.yaml E:\\flutter\\bin\\cache\\dart-sdk\\version d:\\barzidorock_f\\.dart_tool\\package_config.json
