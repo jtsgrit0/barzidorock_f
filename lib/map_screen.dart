@@ -105,42 +105,35 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BarZidoROCK'),
+        title: Row(
+          children: [
+            const Text('BarZidoROCK', softWrap: false),
+            const SizedBox(width: 20),
+            _buildFilterButton('전체', () {
+              setState(() {
+                _selectedCategory = '전체';
+                _applyFilter();
+              });
+            }),
+            const SizedBox(width: 8),
+            _buildFilterButton('홍대', () {
+              setState(() {
+                _selectedCategory = '홍대';
+                _applyFilter();
+              });
+            }),
+            const SizedBox(width: 8),
+            _buildFilterButton('이태원', () {
+              setState(() {
+                _selectedCategory = '이태원';
+                _applyFilter();
+              });
+            }),
+          ],
+        ),
       ),
       body: Column(
         children: [
-          // Filter buttons placeholder
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildFilterButton('전체', () {
-                    setState(() {
-                      _selectedCategory = '전체';
-                      _applyFilter();
-                    });
-                  }),
-                  const SizedBox(width: 8),
-                  _buildFilterButton('홍대', () {
-                    setState(() {
-                      _selectedCategory = '홍대';
-                      _applyFilter();
-                    });
-                  }),
-                  const SizedBox(width: 8),
-                  _buildFilterButton('이태원', () {
-                    setState(() {
-                      _selectedCategory = '이태원';
-                      _applyFilter();
-                    });
-                  }),
-                ],
-              ),
-            ),
-          ),
           Expanded(
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
@@ -163,17 +156,18 @@ class _MapScreenState extends State<MapScreen> {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        foregroundColor: isSelected ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.onSurface,
+        foregroundColor: isSelected ? Colors.white : Colors.white70,
         backgroundColor: isSelected ? Theme.of(context).colorScheme.primary : Colors.transparent,
         side: BorderSide(
-          color: isSelected ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+          color: isSelected ? Theme.of(context).colorScheme.primary : Colors.white54,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        minimumSize: const Size(0, 36),
       ),
-      child: Text(category),
+      child: Text(category, style: const TextStyle(fontSize: 13)),
     );
   }
 }
