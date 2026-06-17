@@ -148,6 +148,18 @@ List<Venue> getHongdaeVenues() {
       address: '서울특별시 마포구 서교동 352-3',
       phoneNumber: '02-434-6666',
     ),
+    Venue(
+      id: 'bluessociety_korea',
+      name: '블루스 소사이어티 코리아',
+      description: '한국의 대표 블루스 라이브 클럽',
+      imageUrl: '',
+      location: const LatLng(37.544372, 126.968741), // 구글맵 실제 좌표 (BLUES SOCIETY KOREA 100% 일치)
+      rating: 4.9,
+      category: '블루스 클럽',
+      ticketUrl: 'https://example.com/ticket23',
+      address: '서울특별시 용산구 한강대로15길 27',
+      phoneNumber: '02-796-7070',
+    ),
   ];
 }
 
