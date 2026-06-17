@@ -105,7 +105,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BarZidoROCK Map'),
+        title: const Text('BarZidoROCK'),
       ),
       body: Column(
         children: [
