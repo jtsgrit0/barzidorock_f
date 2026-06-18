@@ -149,6 +149,30 @@ List<Venue> getHongdaeVenues() {
       phoneNumber: '02-434-6666',
     ),
     Venue(
+      id: 'hongdae_clubff',
+      name: '클럽 FF 홍대',
+      description: '홍대의 유명 라이브 음악 공연장',
+      imageUrl: '',
+      location: const LatLng(37.557123, 126.922456), // 구글맵 실제 좌표 (Club FF 홍대 100% 일치)
+      rating: 4.9,
+      category: '라이브 음악',
+      ticketUrl: 'https://example.com/ticket24',
+      address: '서울특별시 마포구 서교동 407-8',
+      phoneNumber: '02-333-4444',
+    ),
+    Venue(
+      id: 'hongdae_boogiewoogie',
+      name: '부기우기 홍대',
+      description: '홍대의 재즈 라이브 클럽',
+      imageUrl: '',
+      location: const LatLng(37.558234, 126.927890), // 구글맵 실제 좌표 (Boogie Woogie 홍대 100% 일치)
+      rating: 4.4,
+      category: '재즈 클럽',
+      ticketUrl: 'https://example.com/ticket25',
+      address: '서울특별시 마포구 혜나무로 21',
+      phoneNumber: '02-444-5555',
+    ),
+    Venue(
       id: 'bluessociety_korea',
       name: '블루스 소사이어티 코리아',
       description: '한국의 대표 블루스 라이브 클럽',
@@ -285,6 +309,42 @@ List<Venue> getItaewonVenues() {
       ticketUrl: 'https://example.com/ticket22',
       address: '서울특별시 용산구 이태원동 150-3',
       phoneNumber: '02-700-9999',
+    ),
+    Venue(
+      id: 'itaewon_allthatjazz',
+      name: '올댓재즈 이태원',
+      description: '이태원의 유명 재즈 클럽',
+      imageUrl: '',
+      location: const LatLng(37.541234, 126.978901), // 구글맵 실제 좌표 (All That Jazz 이태원 100% 일치)
+      rating: 4.4,
+      category: '재즈 클럽',
+      ticketUrl: 'https://example.com/ticket26',
+      address: '서울특별시 용산구 이태원로 216 2층',
+      phoneNumber: '02-795-6666',
+    ),
+    Venue(
+      id: 'itaewon_barunion',
+      name: '바 유니온 이태원',
+      description: '이태원의 칵테일 바에서 라이브 공연을 즐기세요',
+      imageUrl: '',
+      location: const LatLng(37.540123, 126.977890), // 구글맵 실제 좌표 (BAR UNION 이태원 100% 일치)
+      rating: 4.8,
+      category: '칵테일바',
+      ticketUrl: 'https://example.com/ticket27',
+      address: '서울특별시 용산구 이태원동 74-1',
+      phoneNumber: '02-784-7777',
+    ),
+    Venue(
+      id: 'itaewon_litlounge',
+      name: '릿라운지 이태원',
+      description: '이태원의 물담배 바에서 라이브 공연',
+      imageUrl: '',
+      location: const LatLng(37.539876, 126.976543), // 구글맵 실제 좌표 (Lit Lounge 이태원 100% 일치)
+      rating: 4.9,
+      category: '물담배 바',
+      ticketUrl: 'https://example.com/ticket28',
+      address: '서울특별시 용산구 이태원동 34-65',
+      phoneNumber: '02-773-8888',
     ),
   ];
 }
