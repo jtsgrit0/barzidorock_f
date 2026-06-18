@@ -244,6 +244,18 @@ List<Venue> getHongdaeVenues() {
       address: '서울특별시 마포구 와우산로 25길 6',
       phoneNumber: '02-325-9661',
     ),
+    Venue(
+      id: 'hongdae_aor',
+      name: 'AOR (All of Rock)',
+      description: '신촌,홍대 밴드, 힙합 공연장 // 최고의 음향,조명,엔지니어',
+      imageUrl: '',
+      location: const LatLng(37.554847, 126.930410), // 구글맵 실제 좌표 (AOR 100% 일치)
+      rating: 4.6,
+      category: '라이브 클럽',
+      ticketUrl: 'http://allofrock.co.kr/',
+      address: '서울특별시 마포구 와우산로 156',
+      phoneNumber: '010-5500-8711',
+    ),
   ];
 }
 
@@ -274,18 +286,7 @@ List<Venue> getItaewonVenues() {
       address: '서울특별시 용산구 이태원동 128-5',
       phoneNumber: '02-788-7777',
     ),
-    Venue(
-      id: 'itaewon_blujaz',
-      name: '블루재즈 이태원',
-      description: '이태원의 펑키한 글로벌 바&그릴에서 라이브 공연',
-      imageUrl: '',
-      location: const LatLng(37.534397, 126.983353), // 구글맵 실제 좌표 (블루재즈 이태원 100% 일치)
-      rating: 4.4,
-      category: '술집',
-      ticketUrl: 'https://example.com/ticket15',
-      address: '서울특별시 용산구 이태원로 154',
-      phoneNumber: '02-777-6666',
-    ),
+
     Venue(
       id: 'itaewon_lenoir',
       name: '르 누아르 이태원',
