@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart'; // url_launcher는 VenueDetailScreen에서 사용하므로 남겨둡니다.
 import 'package:barzidorock_f/models/venue.dart';
 import 'package:barzidorock_f/models/venues_data.dart';
 import 'package:barzidorock_f/services/place_service.dart';
 import 'package:barzidorock_f/screens/venue_detail_screen.dart';
 
 class MapScreen extends StatefulWidget {
-  const MapScreen({super.key});
+  final String initialCategory; // 초기 카테고리를 받을 필드 추가
+  const MapScreen({super.key, this.initialCategory = '전체'}); // 기본값 '전체' 설정
 
   @override
   State<MapScreen> createState() => _MapScreenState();
@@ -20,7 +22,7 @@ class _MapScreenState extends State<MapScreen> {
 
   Set<Marker> _markers = {};
   bool _isLoading = false;
-  String _selectedCategory = '전체'; // Default filter
+  late String _selectedCategory; // 초기 카테고리를 위젯에서 받아오도록 변경
 
   // Google Places 검색을 위한 지역 정의
   static const LatLng _hongdaeLocation = LatLng(37.5576, 126.9219); // 홍대 중심
@@ -31,10 +33,23 @@ class _MapScreenState extends State<MapScreen> {
   void initState() {
     super.initState();
     _placeService = Provider.of<PlaceService>(context, listen: false);
-    // 앱 시작시 전체 필터 적용하여 마커 로드
+    _selectedCategory = widget.initialCategory; // 위젯에서 초기 카테고리 설정
+    // 앱 시작시 초기 필터 적용하여 마커 로드
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _applyFilter();
     });
+  }
+
+  // 위젯이 업데이트될 때 initialCategory가 변경되면 _selectedCategory도 업데이트
+  @override
+  void didUpdateWidget(covariant MapScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initialCategory != oldWidget.initialCategory) {
+      setState(() {
+        _selectedCategory = widget.initialCategory;
+        _applyFilter();
+      });
+    }
   }
 
   Future<List<Venue>> _searchPlaces(String query, LatLng location) async {
@@ -105,32 +120,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            const Text('BarZidoROCK', softWrap: false),
-            const SizedBox(width: 20),
-            _buildFilterButton('전체', () {
-              setState(() {
-                _selectedCategory = '전체';
-                _applyFilter();
-              });
-            }),
-            const SizedBox(width: 8),
-            _buildFilterButton('홍대', () {
-              setState(() {
-                _selectedCategory = '홍대';
-                _applyFilter();
-              });
-            }),
-            const SizedBox(width: 8),
-            _buildFilterButton('이태원', () {
-              setState(() {
-                _selectedCategory = '이태원';
-                _applyFilter();
-              });
-            }),
-          ],
-        ),
+        title: Text('BarZidoROCK - $_selectedCategory'), // 선택된 카테고리 표시
       ),
       body: Column(
         children: [
@@ -148,26 +138,6 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildFilterButton(String category, VoidCallback onPressed) {
-    final isSelected = _selectedCategory == category;
-    return OutlinedButton(
-      onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-        foregroundColor: isSelected ? Colors.white : Colors.white70,
-        backgroundColor: isSelected ? Theme.of(context).colorScheme.primary : Colors.transparent,
-        side: BorderSide(
-          color: isSelected ? Theme.of(context).colorScheme.primary : Colors.white54,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        minimumSize: const Size(0, 36),
-      ),
-      child: Text(category, style: const TextStyle(fontSize: 13)),
     );
   }
 }
