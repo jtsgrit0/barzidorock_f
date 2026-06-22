@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:barzidorock_f/map_screen.dart';
+import 'package:barzidorock_f/home_screen.dart'; // HomeScreen import
 import 'package:barzidorock_f/services/venue_service.dart';
 import 'package:barzidorock_f/services/place_service.dart';
 
@@ -28,7 +28,7 @@ class BarZidoRockApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, brightness: Brightness.dark),
         useMaterial3: true,
       ),
-      home: const MapScreen(),
+      home: const HomeScreen(), // HomeScreen으로 변경
     );
   }
 }
