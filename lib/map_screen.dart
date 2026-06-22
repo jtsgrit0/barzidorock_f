@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:barzidorock_f/models/venue.dart';
 import 'package:barzidorock_f/models/venues_data.dart';
 import 'package:barzidorock_f/services/place_service.dart';
@@ -26,6 +27,12 @@ class _MapScreenState extends State<MapScreen> {
   static const LatLng _hongdaeLocation = LatLng(37.5576, 126.9219); // 홍대 중심
   static const LatLng _itaewonLocation = LatLng(37.5345, 126.9905); // 이태원 중심
   static const double _searchRadius = 2000; // 2km 반경
+
+  Future<void> _launchUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      throw Exception('Could not launch $url');
+    }
+  }
 
   @override
   void initState() {
@@ -131,6 +138,13 @@ class _MapScreenState extends State<MapScreen> {
             }),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.airplane_ticket),
+            onPressed: () => _launchUrl('https://jtsgrit0.github.io/barzidorock/tickets'),
+            tooltip: '티켓',
+          ),
+        ],
       ),
       body: Column(
         children: [
