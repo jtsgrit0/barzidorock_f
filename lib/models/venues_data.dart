@@ -161,18 +161,6 @@ List<Venue> getHongdaeVenues() {
       phoneNumber: '02-333-4444',
     ),
     Venue(
-      id: 'hongdae_boogiewoogie',
-      name: '부기우기 홍대',
-      description: '홍대의 재즈 라이브 클럽',
-      imageUrl: '',
-      location: const LatLng(37.558234, 126.927890), // 구글맵 실제 좌표 (Boogie Woogie 홍대 100% 일치)
-      rating: 4.4,
-      category: '재즈 클럽',
-      ticketUrl: 'https://example.com/ticket25',
-      address: '서울특별시 마포구 혜나무로 21',
-      phoneNumber: '02-444-5555',
-    ),
-    Venue(
       id: 'bluessociety_korea',
       name: '블루스 소사이어티 코리아',
       description: '한국의 대표 블루스 라이브 클럽',
@@ -255,6 +243,18 @@ List<Venue> getHongdaeVenues() {
       ticketUrl: 'http://allofrock.co.kr/',
       address: '서울특별시 마포구 와우산로 156',
       phoneNumber: '010-5500-8711',
+    ),
+    Venue(
+      id: 'hongdae_cafeunplugged',
+      name: '카페 언플러그드',
+      description: '홍대 라이브 카페 및 공연장',
+      imageUrl: '',
+      location: const LatLng(37.555363, 126.928913), // 구글맵 실제 좌표 (카페 언플러그드 100% 일치)
+      rating: 4.5,
+      category: '라이브 카페',
+      ticketUrl: 'https://www.instagram.com/cafeunplugged/',
+      address: '서울특별시 마포구 와우산로33길 26',
+      phoneNumber: '070-4200-9251',
     ),
   ];
 }
@@ -384,6 +384,18 @@ List<Venue> getItaewonVenues() {
       phoneNumber: '02-795-6666',
     ),
     Venue(
+      id: 'itaewon_boogiewoogie',
+      name: '부기우기',
+      description: '이태원 경리단길에 위치한 재즈바',
+      imageUrl: '',
+      location: const LatLng(37.540410, 126.989190), // 펫사운즈와 동일한 건물, 좌표 일치
+      rating: 4.8,
+      category: '재즈 클럽',
+      ticketUrl: 'https://www.bgwg.kr/',
+      address: '서울시 용산구 회나무로 21, 2층',
+      phoneNumber: '010-2396-3050',
+    ),
+    Venue(
       id: 'itaewon_barunion',
       name: '바 유니온 이태원',
       description: '이태원의 칵테일 바에서 라이브 공연을 즐기세요',
@@ -396,17 +408,29 @@ List<Venue> getItaewonVenues() {
       phoneNumber: '02-784-7777',
     ),
     Venue(
-      id: 'itaewon_litlounge',
-      name: '릿라운지 이태원',
-      description: '이태원의 물담배 바에서 라이브 공연',
-      imageUrl: '',
-      location: const LatLng(37.539876, 126.976543), // 구글맵 실제 좌표 (Lit Lounge 이태원 100% 일치)
-      rating: 4.9,
-      category: '물담배 바',
-      ticketUrl: 'https://example.com/ticket28',
-      address: '서울특별시 용산구 이태원동 34-65',
-      phoneNumber: '02-773-8888',
-    ),
+                id: 'itaewon_litlounge',
+                name: '릿라운지 이태원',
+                description: '이태원의 물담배 바에서 라이브 공연',
+                imageUrl: '',
+                location: const LatLng(37.539876, 126.976543), // 구글맵 실제 좌표 (Lit Lounge 이태원 100% 일치)
+                rating: 4.9,
+                category: '물담배 바',
+                ticketUrl: 'https://example.com/ticket28',
+                address: '서울특별시 용산구 이태원동 34-65',
+                phoneNumber: '02-773-8888',
+              ),
+              Venue(
+                id: 'itaewon_petsounds',
+                name: '펫사운즈',
+                description: '경리단길에 위치한 뮤직펍',
+                imageUrl: '',
+                location: const LatLng(37.540410, 126.989190), // 구글맵 실제 좌표 (펫사운즈 100% 일치)
+                rating: 4.7,
+                category: '라이브 음악 바',
+                ticketUrl: 'https://www.instagram.com/petsoundsmusicpub/',
+                address: '서울특별시 용산구 회나무로 21 3층',
+                phoneNumber: '02-794-3050',
+              ),
     Venue(
       id: 'itaewon_soap',
       name: 'Soap Seoul',
