@@ -29,6 +29,12 @@ class _MapScreenState extends State<MapScreen> {
   static const LatLng _itaewonLocation = LatLng(37.5345, 126.9905); // 이태원 중심
   static const double _searchRadius = 2000; // 2km 반경
 
+  Future<void> _launchUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   void initState() {
     super.initState();
